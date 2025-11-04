@@ -1,16 +1,22 @@
 [app]
 title = OKX Margin Calculator
-package.name = okxmargin
-package.domain = org.example
-source.include_exts = py,png,jpg,kv,atlas
-requirements = python3,kivy,kivymd,requests,pandas,ccxt,pillow
+package.name = okx_calculator
+package.domain = org.okx
+source.dir = .
+source.include_exts = py, png, jpg, txt, kv
+version = 1.0.0
+
+requirements = python3, kivy
 orientation = portrait
 fullscreen = 0
-android.api = 33
-android.minapi = 27
-android.archs = armeabi-v7a, arm64-v8a
+
+android.api = 34
+android.minapi = 21
+android.sdk_path = /home/runner/.buildozer/android/platform/android-sdk
+android.ndk = 25b
+android.archs = arm64-v8a, armeabi-v7a
 android.permissions = INTERNET
-log_level = 2
 
 [buildozer]
-warn_on_root = 0
+log_level = 2
+warn_on_root = 1
