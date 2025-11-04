@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y zip unzip openjdk-17-jdk
+          sudo apt-get install -y zip unzip openjdk-17-jdk wget
           python -m pip install --upgrade pip
           pip install buildozer cython virtualenv
 
@@ -32,8 +32,8 @@ jobs:
           unzip sdk.zip -d latest
           rm sdk.zip
           export PATH=$HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin:$PATH
-          yes | sdkmanager --licenses
-          sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
+          yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+          ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       - name: Build APK
         run: |
