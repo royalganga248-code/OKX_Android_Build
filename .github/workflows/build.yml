@@ -31,13 +31,11 @@ jobs:
           wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O sdk.zip
           unzip sdk.zip -d latest
           rm sdk.zip
-          export PATH=$HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin:$PATH
           yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
           ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       - name: Build APK
         run: |
-          export PATH=$HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin:$PATH
-          export ANDROIDSDK=$HOME/.buildozer/android/platform/android-sdk
-          export ANDROIDNDK=$HOME/.buildozer/android/platform/android-ndk-r25b
-          buildozer android debug
+          ANDROID_SDK=$HOME/.buildozer/android/platform/android-sdk
+          ANDROID_NDK=$HOME/.buildozer/android/platform/android-ndk-r25b
+          python -m buildozer android debug
